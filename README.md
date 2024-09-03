@@ -8,19 +8,13 @@ using UnityEngine.Animations;
 
 using UnityEngine.UIElements;
 
-
-
 public class Move : MonoBehaviour
 {
-
 
     // Start is called before the first frame update
 
 
-
-    Vector3 posicao;
-    Vector3 giragira;
-
+    public Vector3 escala, giragira, posicao;
 
     void Start()
     {
@@ -30,7 +24,10 @@ public class Move : MonoBehaviour
 
         giragira = new Vector3(0, 0, 0);
 
-
+        escala.x = 5f;
+        escala.z = 5f;
+        escala.y = 5f;
+        transform.localScale = escala;
     }
 
     // Update is called once per frame
@@ -56,7 +53,7 @@ public class Move : MonoBehaviour
 
         {
 
-            if (transform.position.z < 4)
+            if (transform.position.z < 34)
             {
 
                 posicao.z = 0.01f;
@@ -69,7 +66,7 @@ public class Move : MonoBehaviour
         if (Input.GetKey(KeyCode.S))
         {
 
-            if (transform.position.z > -4)
+            if (transform.position.z > -34)
 
             {
 
@@ -83,13 +80,13 @@ public class Move : MonoBehaviour
             posicao.y = 0.03f;
             posicao.z = 0.0f;
             transform.Translate(posicao);
-            }
+        }
 
-            if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
 
         {
 
-            if (transform.position.x > -4)
+            if (transform.position.x > -34)
 
             {
                 posicao.x = -0.01f;
@@ -101,13 +98,19 @@ public class Move : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
 
-            if (transform.position.x < 4)
+            if (transform.position.x < 34)
 
             {
                 posicao.x = 0.01f;
             }
         }
 
+        if((Input.GetKey(KeyCode.Y))) {
+            escala.x = Random.Range(2f, 10f);
+            escala.y = Random.Range(2f, 10f);
+            escala.z = Random.Range(2f, 10f);
+            transform.localScale = escala;
+        }
 
 
         transform.Translate(posicao);
@@ -125,5 +128,3 @@ public class Move : MonoBehaviour
 
     }
 }
-
-
